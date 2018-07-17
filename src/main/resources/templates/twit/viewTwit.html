@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en" dir="ltr" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" th:href="@{/css/foundation.css}">
+    <link rel="stylesheet" th:href="@{/css/app.css}">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+</head>
+<body>
+
+<div class="grid-container">
+    <div th:replace="fragments/menu.html :: menu">
+
+    </div>
+
+    <div class="row">
+        <br>
+    </div>
+    <div class="row">
+        <div class="card align-center-middle text-center">
+            <div class="card-section text-center">
+                <h1 th:if="${twit.getAuthor() != null}" th:text="${twit.getAuthor().getUsername()}"></h1>
+                <p th:text="${twit.getContent()}"></p>
+                <p  style="font-size: 10px" th:text="${#dates.format(twit.creationDate, 'dd-MM-yyyy')}"></p>
+            </div>
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="grid-x align-center-middle">
+            <div class="small-1">
+                <a th:href="'#' + ${twit.getId()}" class="warning button">Delete</a>
+            </div>
+            <div class="small-1">
+                <a th:href="'/twit/' + ${twit.getId()} + '/edit'" class="success button">Update</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/js/vendor/jquery.js"></script>
+<script src="/js/vendor/what-input.js"></script>
+<script src="/js/vendor/foundation.js"></script>
+<script src="/js/app.js"></script>
+</body>
+</html>

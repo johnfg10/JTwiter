@@ -1,0 +1,61 @@
+<!--<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <title>Spring Security Example </title>
+</head>
+<body>
+<div th:if="${param.error}">
+    Invalid username and password.
+</div>
+<div th:if="${param.logout}">
+    You have been logged out.
+</div>
+<form th:action="@{/login}" method="post">
+    <div><label> User Name : <input type="text" name="username"/> </label></div>
+    <div><label> Password: <input type="password" name="password"/> </label></div>
+    <div><input type="submit" value="Sign In"/></div>
+</form>
+</body>
+</html>-->
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Login</title>
+    <link rel="stylesheet" th:href="@{css/foundation.css}">
+    <link rel="stylesheet" th:href="@{css/app.css}">
+</head>
+<body>
+<div class="grid-y">
+    <div th:if="${param.error}" class="cell"><span class="warning">Invalid username and password.</span> </div>
+    <div class="cell"><h1></h1></div>
+    <div class="cell">
+        <form th:action="@{/login}" method="post">
+            <div class="grid-container">
+                <div class="grid-x grid-padding-x">
+                    <div class="medium-6 cell">
+                        <label>Username:
+                            <input type="text" name="username" placeholder="username">
+                        </label>
+                    </div>
+                    <div class="medium-6 cell">
+                        <label>Password:
+                            <input type="password" name="password" placeholder="password">
+                        </label>
+                    </div>
+                    <div class="cell medium-2 input-group-button">
+                        <input type="submit" class="button" value="Login">
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="/js/vendor/jquery.js"></script>
+<script src="/js/vendor/what-input.js"></script>
+<script src="/js/vendor/foundation.js"></script>
+<script src="/js/app.js"></script>
+</body>
+</html>

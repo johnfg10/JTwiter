@@ -1,0 +1,51 @@
+<!doctype html>
+<html class="no-js" lang="en" dir="ltr" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" th:href="@{/css/foundation.css}">
+    <link rel="stylesheet" th:href="@{/css/app.css}">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+</head>
+<body>
+
+<div class="grid-container">
+    <div th:replace="fragments/menu.html :: menu">
+
+    </div>
+
+    <div class="row"><br></div>
+
+    <div class="row">
+        <div class="grid-x align-center-middle">
+            <h1>Are you sure there's no going back afterwards?</h1>
+        </div>
+    </div>
+    <div class="row"><br></div>
+
+    <div class="row">
+        <div class="grid-x align-center-middle">
+            <div class="small-2">
+                <form th:href="'/twit/' + ${twit.getId()} + '/delete'" th:method="get">
+                    <label>
+                        <input type="submit" value="Delete" class="alert button">
+                    </label>
+                    <input type="hidden" name="accept" value="true">
+                </form>
+            </div>
+            <div class="small-1">
+                <a th:href="'/twit/' + ${twit.getId()}" class="primary button">Cancel</a>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script src="/js/vendor/jquery.js"></script>
+<script src="/js/vendor/what-input.js"></script>
+<script src="/js/vendor/foundation.js"></script>
+<script src="/js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!doctype html>
+<html class="no-js" lang="en" dir="ltr" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" th:href="@{css/foundation.css}">
+    <link rel="stylesheet" th:href="@{css/app.css}">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+</head>
+<body>
+
+<div class="grid-container">
+    <div th:replace="fragments/menu.html :: menu">
+
+    </div>
+    <div class="row"><br></div>
+    <div th:if="${param.addedtwit}" class="cell"><span class="warning">Added twit</span> </div>
+    <!--/*@thymesVar id="announcements" type="io.github.johnfg10.jtweeter.database.model.Announcement[]"*/-->
+    <div class="row">
+        <div class="columns">
+            <div class="orbit" role="region" aria-label="Favorite Text Ever" data-orbit>
+                <ul class="orbit-container">
+                    <button class="orbit-previous" aria-label="previous"><span class="show-for-sr">Previous Slide</span>&#9664;</button>
+                    <button class="orbit-next" aria-label="next"><span class="show-for-sr">Next Slide</span>&#9654;</button>
+
+
+                    <li th:each="announcement: ${announcements}" class="is-active orbit-slide">
+                        <div class="docs-example-orbit-slide">
+                            <!--/*@thymesVar id="announcement" type="io.github.johnfg10.jtweeter.database.model.Announcement"*/-->
+                            <h1 class="text-center" th:text="${announcement.title}"></h1>
+                            <p class="text-center" th:text="${announcement.content}"></p>
+                            <p class="text-center" style="font-size: 10px" th:text="'Created: ' + ${#dates.format(announcement.creationDate, 'dd-MM-yyyy')}"></p>
+                            <p class="text-center" style="font-size: 10px" th:if="${announcement.expirationDate} == null">This entry does not currently expire</p>
+                            <p class="text-center" style="font-size: 10px" th:if="${announcement.expirationDate} != null" th:text="'Expires on:' + ${#dates.format(announcement.expirationDate, 'dd-MM-yyyy')}"></p>
+                        </div>
+                    </li>
+                </ul>
+                <nav class="orbit-bullets">
+                    <button th:each="id, val : ${announcements}" th:attr="data-slide=${val.count} - 1" th:attrappend="class=${val.first} ? 'is-active'"><span class="show-for-sr">First slide details.</span><span class="show-for-sr">Current Slide</span></button>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <br>
+        <p>this is a site where i will be creating a twitter style application to allow me to better learn Spring, Thymeleaf, JPA, HTML, JS, CSS and the foundation web framework</p>
+    </div>
+</div>
+
+<script src="/js/vendor/jquery.js"></script>
+<script src="/js/vendor/what-input.js"></script>
+<script src="/js/vendor/foundation.js"></script>
+<script src="/js/app.js"></script>
+</body>
+</html>

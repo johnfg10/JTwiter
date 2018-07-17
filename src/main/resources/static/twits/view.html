@@ -1,0 +1,40 @@
+<!doctype html>
+<html class="no-js" lang="en" dir="ltr" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="/css/foundation.css">
+    <link rel="stylesheet" href="/css/app.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+</head>
+<body>
+
+<div class="grid-container">
+    <div th:replace="fragments/menu.html :: menu">
+
+    </div>
+    <div class="row"><br></div>
+    <div class="row input-group">
+        <span class="input-group-label">#</span>
+        <input class="input-group-field" type="number" id="number">
+        <div class="input-group-button">
+            <input type="submit" class="button" value="Enter" onclick="onSubmit()">
+        </div>
+    </div>
+</div>
+
+<script>
+    function onSubmit() {
+        window.location = "/twit/" + document.getElementById("number").value;
+        return true;
+    }
+</script>
+
+<script src="/js/vendor/jquery.js"></script>
+<script src="/js/vendor/what-input.js"></script>
+<script src="/js/vendor/foundation.js"></script>
+<script src="/js/app.js"></script>
+</body>
+</html>
